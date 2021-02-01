@@ -46,4 +46,4 @@ The scripts are written in Python 3.
     # Knwon folder owner and their email address 
     softfolder = 'C:\\Temp\\result\\folder_owner.csv'
 3. After editing it you could run it by typing `python scan.py`
-
+![alt text](https://github.com/dingtoffee/Clear-Text-Password-Scanner-in-Windows-Share-Drive/blob/main/result.PNG?raw=true)

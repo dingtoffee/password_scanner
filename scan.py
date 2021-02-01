@@ -23,9 +23,9 @@ finalfile = 'C:\\Temp\\result\\finalresult' + date + '.csv'
 textract_ext = ['docx','eml','epub','msg','pptx','ps','txt','xlsx','xls','rtf','pdf']
 native_ext = ['template','conf','config','deploy','bat','vbs','LOG','xml','cmd','vb','py','pl','csv','html','json','htm']
 
-# Static File do not modify 
+# Static File FP is the known false positive you want to eliminate. Folder_Owner refer to the known folder owner you want to incorporate. A sample has been uploaded on the git as well. You could append your own entry there.
 fp = 'C:\\Temp\\result\\fp.csv'
-softfolder = 'C:\\Temp\\result\\Soft_Folder_review.csv'
+softfolder = 'C:\\Temp\\result\\folder_owner.csv'
 
 # To search for any cleartext password
 def searchstring(): 
@@ -101,7 +101,7 @@ def validation():
     df3 = pd.DataFrame(columns=['timestamp','path','keywords', 'FolderName', 'FolderOwner', 'EmailAddress', 'AttachementName'])
     df2 = pd.read_csv(outputfile,sep='\|\|', engine='python',header=None)
     df2.columns = ['timestamp', 'path' ,'keywords']
-    df6 = pd.read_csv (softfolder)
+    df6 = pd.read_csv (folderowner)
 
 # Identify the owner and email address 
     for index, row in df2.iterrows():
@@ -109,6 +109,7 @@ def validation():
         x = df[df['FP']== y].empty
         if x is True:
             rows = pd.DataFrame(data=[row])
+            # depends on the unique identifier of the file name, you may need to change [5] to the number you need.
             rows['FolderName'] = [x.split('\\')[5] for x in rows['path']]
             rows['FolderOwner'] = rows['FolderName'].map(df6.set_index('Folder')['Owner'])
             rows['EmailAddress'] = rows['FolderName'].map(df6.set_index('Folder')['Email'])

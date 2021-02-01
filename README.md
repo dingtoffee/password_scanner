@@ -17,7 +17,7 @@ The scripts are written in Python 3.
 2. Run the script 
    `python dirlist.py`
    It can take a few days to complete the scanning for > 1M files and over hundreds folder. Afterwards, it will be broken down into multiple files with all the files listed. Each of the file will have 1000 entries.
-  
+![alt text](https://github.com/dingtoffee/Clear-Text-Password-Scanner-in-Windows-Share-Drive/blob/main/dirlist.PNG?raw=true)  
 
 # Identify Clear-Text Passwords in the directory 
 1. Install pandas
@@ -41,8 +41,9 @@ The scripts are written in Python 3.
     # the type of file supported
     textract_ext = ['docx','eml','epub','msg','pptx','ps','txt','xlsx','xls','rtf','pdf']
     native_ext = ['template','conf','config','deploy','bat','vbs','LOG','xml','cmd','vb','py','pl','csv','html','json','htm']
-    # Known false positive you want to exclude 
+    # Known false positive you want to exclude, an example has been uploaded to github as well (fp.csv). Follow that template to upload known false positive path to be eliminate from the result. 
     fp = 'C:\\Temp\\result\\fp.csv'
     # Knwon folder owner and their email address 
     softfolder = 'C:\\Temp\\result\\folder_owner.csv'
 3. After editing it you could run it by typing `python scan.py`
+

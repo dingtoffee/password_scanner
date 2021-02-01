@@ -17,11 +17,12 @@ The scripts are written in Python 3.
 2. Run the script 
    `python dirlist.py`
    It can take a few days to complete the scanning for > 1M files and over hundreds folder. Afterwards, it will be broken down into multiple files with all the files listed. Each of the file will have 1000 entries.
+  
 
 # Identify Clear-Text Passwords in the directory 
 1. Install pandas
     ````python 
-    pip install pandas 
+    pip install pandas textract
     ````
 2. Edit scan.py to include the directory and keywords you want to scan
    ````python 
